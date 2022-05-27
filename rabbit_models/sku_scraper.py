@@ -4,11 +4,24 @@ from pydantic import AnyHttpUrl, BaseModel
 
 
 class Metadata(BaseModel):
-    create: datetime = datetime.utcnow()
+    """
+    created - When the message was created
+    query - The query which the SKU came from
+    attempts - How many times the message have been requeued
+    """
+
+    created: datetime = datetime.utcnow()
     query: str | None = None
+    attempts: int | None = None
 
 
 class Content(BaseModel):
+    """
+    urls - List of urls needed to be visited to obtain a SKU
+    marketplace - Marketplace configuration to use
+    metadata - Data about this message
+    """
+
     urls: list[AnyHttpUrl]
     marketplace: str
     metadata: Metadata = Metadata()
