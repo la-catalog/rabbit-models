@@ -7,7 +7,7 @@ long_description = Path("README.md").read_text()
 setup(
     name="rabbit-models",
     version="0.0.1",
-    description="Contains all models for queue messages",
+    description="All RabbitMQ messages models",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/thiagola92/rabbit-models",
