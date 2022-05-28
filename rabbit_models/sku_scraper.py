@@ -15,7 +15,7 @@ class Metadata(BaseModel):
     attempts: int | None = None
 
 
-class Content(BaseModel):
+class Body(BaseModel):
     """
     urls - List of urls needed to be visited to obtain a SKU
     marketplace - Marketplace configuration to use
