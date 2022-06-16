@@ -19,7 +19,7 @@ class Metadata(BaseModel):
 
 class Body(BaseModel):
     """
-    urls - List of urls needed to be visited to obtain a SKU
+    url - URL to visited in order to obtain SKUs
     marketplace - Marketplace configuration to use
     metadata - Data about this message
     """
