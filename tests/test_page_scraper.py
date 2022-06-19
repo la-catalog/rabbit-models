@@ -1,10 +1,10 @@
 import unittest
 from unittest import TestCase
 
-from rabbit_models.sku_scraper import Content
+from rabbit_models.page_scraper import Content
 
 
-class TestSkuScraper(TestCase):
+class TestPageScraper(TestCase):
     def setUp(self) -> None:
         self._urls = ["https://www.americanas.com.br/produto/1706966384"]
         self._marketplace = "americanas"
