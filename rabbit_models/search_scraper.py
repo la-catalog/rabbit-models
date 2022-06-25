@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from pydantic import AnyHttpUrl, BaseModel
+from pydantic import AnyHttpUrl, BaseModel, constr, validator
 
 
 class Metadata(BaseModel):
@@ -12,9 +12,9 @@ class Metadata(BaseModel):
     """
 
     created: datetime = datetime.utcnow()
-    query: str | None = None
-    attempts: int | None = None
-    source: str | None = None
+    query: constr(strip_whitespace=True, min_length=1) | None = None
+    attempts: int = 0
+    source: constr(strip_whitespace=True, to_lower=True, min_length=1)
 
 
 class Body(BaseModel):
@@ -25,5 +25,7 @@ class Body(BaseModel):
     """
 
     url: AnyHttpUrl
-    marketplace: str
-    metadata: Metadata = Metadata()
+    marketplace: constr(strip_whitespace=True, to_lower=True, min_length=1)
+    metadata: Metadata
+
+    _urls = validator("url")(lambda u: str(u))
