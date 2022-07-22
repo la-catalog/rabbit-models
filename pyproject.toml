@@ -1,0 +1,44 @@
+[project]
+name = "rabbit-models"
+version = "0.1.0"
+description = "All RabbitMQ messages models"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    {name = "thiagola92", email = "thiagola92@gmail.com"},
+]
+keywords = [
+    "rabbitmq",
+    "models",
+]
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "pydantic>=1.9.1",
+]
+
+[project.urls]
+repository = "https://github.com/thiagola92/rabbit-models"
+
+[tool.pdm]
+
+[tool.pdm.scripts]
+tests = "python -m unittest discover -v -f -s tests"
+sort = "python -m isort -v --ac ."
+
+[tool.pdm.dev-dependencies]
+lint = [
+    "black",
+    "isort"
+]
+
+# [[tool.pdm.source]]
+# url = "https://private-site.org/pypi/simple"
+# verify_ssl = false
+# name = "lacatalog"
+
+[build-system]
+requires = ["pdm-pep517>=0.12.0"]
+build-backend = "pdm.pep517.api"
