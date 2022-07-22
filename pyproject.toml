@@ -20,7 +20,7 @@ dependencies = [
 ]
 
 [project.urls]
-repository = "https://github.com/thiagola92/rabbit-models"
+repository = "https://github.com/la-catalog/rabbit-models"
 
 [tool.pdm]
 
