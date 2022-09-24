@@ -7,12 +7,13 @@ authors = [
     {name = "thiagola92", email = "thiagola92@gmail.com"},
 ]
 dependencies = [
-    "pydantic>=1.9.1",
+    "pydantic==1.10.2",
 ]
 
 [project.urls]
 repository = "https://github.com/la-catalog/rabbit-models"
 
+[project.optional-dependencies]
 [tool.pdm]
 
 [tool.pdm.scripts]
@@ -22,8 +23,8 @@ isort = "python -m isort -v --ac ."
 
 [tool.pdm.dev-dependencies]
 lint = [
-    "black",
-    "isort"
+    "black==22.8.0",
+    "isort==5.10.1",
 ]
 
 [build-system]
