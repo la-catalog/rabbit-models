@@ -22,6 +22,11 @@ jobs:
           enable-pep582: true
       - run: pdm install
       - run: pdm run python src/add.py test 0.0.1
+      - uses: EndBug/add-and-commit@v9
+        with:
+          message: Workflow fix
+          committer_name: actions
+          committer_email: actions@github.com
       # - run: pdm publish --username __token__ --password ${{ secrets.PYPI_TOKEN }}
       # old, use as reference
       # - uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
