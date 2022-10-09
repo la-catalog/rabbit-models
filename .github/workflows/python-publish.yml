@@ -11,11 +11,15 @@ jobs:
     steps:
       # - run: curl -s https://install.zerotier.com | sudo bash
       - uses: actions/checkout@v3
+        with:
+          repository: 'la-catalog/pypi'
+          token: ${{ secrets.gh_token }}
       - uses: pdm-project/setup-pdm@main
         with:
           python-version: "3.10"
           enable-pep582: true
       - run: pdm install
+      - run: pdm run python src/add.py test 0.0.1
       # - run: pdm publish --username __token__ --password ${{ secrets.PYPI_TOKEN }}
       # old, use as reference
       # - uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
