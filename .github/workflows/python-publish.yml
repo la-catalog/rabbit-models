@@ -8,6 +8,8 @@ on:
 jobs:
   publish:
     runs-on: self-hosted
+    env:
+      GITHUB_ORG: la-catalog
     steps:
       # - run: curl -s https://install.zerotier.com | sudo bash
       - uses: actions/checkout@v3
