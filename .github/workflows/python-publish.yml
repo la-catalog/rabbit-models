@@ -11,11 +11,11 @@ jobs:
     runs-on: self-hosted
     env:
       GITHUB_ORG: la-catalog
+      GITHUB_REPO: pypi
     steps:
-      # - run: curl -s https://install.zerotier.com | sudo bash
       - uses: actions/checkout@v3
         with:
-          repository: '${{ env.GITHUB_ORG }}/pypi'
+          repository: '${{ env.GITHUB_ORG }}/${{ env.GITHUB_REPO }}'
           token: ${{ secrets.gh_token }}
       - uses: pdm-project/setup-pdm@main
         with:
@@ -28,10 +28,3 @@ jobs:
           message: Workflow fix
           committer_name: actions
           committer_email: actions@github.com
-      # - run: pdm publish --username __token__ --password ${{ secrets.PYPI_TOKEN }}
-      # old, use as reference
-      # - uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
-      #   with:
-      #     user: ${{ secrets.PYPI_USER }}
-      #     password: ${{ secrets.PYPI_PASSWORD }}
-      #     repository_url: http://${{ secrets.PYPI_ADDRESS }}:${{ secrets.PYPI_PORT }}/simple/
