@@ -9,7 +9,7 @@ env:
   PYTHON_VERSION: "3.10"
   GITHUB_ORG: la-catalog
   GITHUB_REPO: pypi
-  GH_TOKEN: ${{ env.GITHUB_TOKEN }}
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   update-version:
