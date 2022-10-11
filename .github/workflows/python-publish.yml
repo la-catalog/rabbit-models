@@ -45,30 +45,30 @@ jobs:
           gh release edit ${{ github.ref_name }} --draft=false --repo=${{ github.repository }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  # publish:
-  #   runs-on: self-hosted
-  #   needs: update-version
-  #   steps:
-  #     - name: Checkout PyPi repository
-  #       uses: actions/checkout@v3
-  #       with:
-  #         repository: '${{ env.GITHUB_ORG }}/${{ env.GITHUB_REPO }}'
-  #         token: ${{ secrets.gh_token }}
+  publish:
+    runs-on: self-hosted
+    needs: update-version
+    steps:
+      - name: Checkout PyPi repository
+        uses: actions/checkout@v3
+        with:
+          repository: '${{ env.GITHUB_ORG }}/${{ env.GITHUB_REPO }}'
+          token: ${{ secrets.gh_token }}
 
-  #     - name: Setup pdm
-  #       uses: pdm-project/setup-pdm@main
-  #       with:
-  #         python-version: ${{ env.PYTHON_VERSION }}
-  #         enable-pep582: true
+      - name: Setup pdm
+        uses: pdm-project/setup-pdm@main
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          enable-pep582: true
 
-  #     - name: Add package
-  #       run: |
-  #         pdm install
-  #         pdm run python src/add.py ${{ github.event.repository.name }} ${{ github.ref_name }}
+      - name: Add package
+        run: |
+          pdm install
+          pdm run python src/add.py ${{ github.event.repository.name }} ${{ github.ref_name }}
           
-  #     - name: Push changes
-  #       uses: EndBug/add-and-commit@v9
-  #       with:
-  #         message: Publish package
-  #         committer_name: actions
-  #         committer_email: actions@github.com
+      - name: Push changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: Publish package
+          committer_name: actions
+          committer_email: actions@github.com
