@@ -35,25 +35,19 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           message: Update version
-          committer_name: actions
-          committer_email: actions@github.com
 
-      - name: Delete tag
+      - name: Delete tag from Git
         run: git tag -d ${{ github.ref_name }}
       
-      - name: Remove tag in Github
+      - name: Delete tag from Github
         uses: EndBug/add-and-commit@v9
         with:
           push: 'origin :refs/tags/${{ github.ref_name }}'
-
-      - name: Create tag
-        run: |
-          git tag ${{ github.ref_name }}
       
-      - name: Push tag change
+      - name: Push new tag
         uses: EndBug/add-and-commit@v9
         with:
-          push: 'origin :refs/tags/${{ github.ref_name }}'
+          tag: ${{ github.ref_name }}
   publish:
     runs-on: self-hosted
     needs: update-version
