@@ -43,6 +43,7 @@ jobs:
           git push origin :refs/tags/${{ github.ref_name }}
           git tag -f ${{ github.ref_name }}
           git push origin ${{ github.ref_name }}
+          gh release edit ${{ github.ref_name }} --draft=false --repo=${{ github.repository }}
   # publish:
   #   runs-on: self-hosted
   #   needs: update-version
