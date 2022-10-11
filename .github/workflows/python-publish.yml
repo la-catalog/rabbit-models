@@ -41,7 +41,7 @@ jobs:
         run: |
           git push origin :refs/tags/${{ github.ref_name }}
           git tag -f ${{ github.ref_name }}
-          git push --tags
+#          git push --tags
   # publish:
   #   runs-on: self-hosted
   #   needs: update-version
